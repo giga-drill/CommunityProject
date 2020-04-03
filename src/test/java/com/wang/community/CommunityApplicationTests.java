@@ -25,6 +25,8 @@ public class CommunityApplicationTests implements ApplicationContextAware {
 
 
 	private ApplicationContext applicationContext;
+	//1
+	private int one;
 
 
 	@Override
