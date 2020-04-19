@@ -170,13 +170,16 @@ public class UserService implements CommunityConstant {
 
         map.put("ticket", loginTicket.getTicket());
 
-
         return map;
 
     }
 
     public void logout(String ticket) {
-        loginTicketMapper.updateStatus(ticket,1);
+        loginTicketMapper.updateStatus(ticket, 1);
+    }
+
+    public LoginTicket findLoginTicket(String ticket) {
+        return loginTicketMapper.selectByTicket(ticket);
     }
 
 
