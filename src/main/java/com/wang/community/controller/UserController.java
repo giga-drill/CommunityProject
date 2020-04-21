@@ -1,5 +1,6 @@
 package com.wang.community.controller;
 
+import com.wang.community.annotation.LoginRequired;
 import com.wang.community.entity.User;
 import com.wang.community.service.UserService;
 import com.wang.community.util.CommunityUtil;
@@ -45,11 +46,13 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
+    @LoginRequired
     @RequestMapping(path = "/setting", method = RequestMethod.GET)
     public String getSettingPage() {
         return "/site/setting";
     }
 
+    @LoginRequired
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
     public String uploadHeader(MultipartFile headerImage, Model model) {
 
