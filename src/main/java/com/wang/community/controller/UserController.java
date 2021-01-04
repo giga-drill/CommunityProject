@@ -114,6 +114,26 @@ public class UserController {
 
 
     }
+    // 修改密码
+    @LoginRequired
+    @RequestMapping(path = "/updatePwd", method = RequestMethod.POST)
+    public String updatePassword(String oldPassword, String newPassword, Model model) {
+        User user = hostHolder.getUser();
+        String salt = user.getSalt();
+        String oP = CommunityUtil.MD5(oldPassword + salt);
+        String tP = user.getPassword();
+        String nP = CommunityUtil.MD5(newPassword+salt);
+
+
+        if (!oP.equals(tP)){
+            model.addAttribute("error", "原密码输入错误，请重试");
+            return "/site/setting";
+        }
+        userService.updatePassword(user.getId(), nP);
+
+        return "redirect:/index";
+    }
+
 
 
 }
