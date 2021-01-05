@@ -5,7 +5,6 @@ import com.wang.community.entity.Page;
 import com.wang.community.entity.User;
 import com.wang.community.service.DiscussPostService;
 import com.wang.community.service.UserService;
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +34,7 @@ public class HomeController {
         page.setPath("/index");
 
 
-        List<DiscussPost> list = discussPostService.findDisscussPosts(0,page.getOffset(),page.getLimit());
+        List<DiscussPost> list = discussPostService.findDiscussPosts(0,page.getOffset(),page.getLimit());
 
         List<Map<String,Object>> discussPosts = new ArrayList<>();
 

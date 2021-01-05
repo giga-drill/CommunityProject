@@ -10,9 +10,19 @@ public class DiscussPost {
     private int type;
     private int status;
     private Date createTime;
-    private int commentType;
+    private int commentCount;
     private double score;
 
+    public DiscussPost() {
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
     public int getId() {
         return id;
     }
@@ -69,14 +79,6 @@ public class DiscussPost {
         this.createTime = createTime;
     }
 
-    public int getCommentType() {
-        return commentType;
-    }
-
-    public void setCommentType(int commentType) {
-        this.commentType = commentType;
-    }
-
     public double getScore() {
         return score;
     }
@@ -89,13 +91,13 @@ public class DiscussPost {
     public String toString() {
         return "DiscussPost{" +
                 "id=" + id +
-                ", userid=" + userId +
+                ", userId=" + userId +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", type=" + type +
                 ", status=" + status +
                 ", createTime=" + createTime +
-                ", commentType=" + commentType +
+                ", commentCount=" + commentCount +
                 ", score=" + score +
                 '}';
     }

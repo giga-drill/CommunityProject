@@ -113,6 +113,15 @@ public class MapperTests {
         System.out.println(loginTicket);
 
     }
+    @Test
+    public void testInsertDiscussPost() {
+        DiscussPost post = new DiscussPost();
+        post.setUserId(155);
+        post.setTitle("start");
+        post.setContent("start!");
+        post.setCreateTime(new Date());
+        discussPostMapper.insertDiscussPost(post);
+    }
 
 
 }
