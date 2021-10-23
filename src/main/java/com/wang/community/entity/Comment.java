@@ -5,6 +5,7 @@ import java.util.Date;
 public class Comment {
     private int id;
     private int userId;
+    private int entityType;
     private int entityId;
     private int targetId;
     private String content;
@@ -67,11 +68,20 @@ public class Comment {
         this.createTime = createTime;
     }
 
+    public int getEntityType() {
+        return entityType;
+    }
+
+    public void setEntityType(int entityType) {
+        this.entityType = entityType;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
                 "id=" + id +
                 ", userId=" + userId +
+                ", entityType=" + entityType +
                 ", entityId=" + entityId +
                 ", targetId=" + targetId +
                 ", content='" + content + '\'' +

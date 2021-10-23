@@ -1,11 +1,9 @@
 package com.wang.community;
 
-import com.wang.community.dao.AlphaDao;
-import com.wang.community.dao.DiscussPostMapper;
-import com.wang.community.dao.LoginTicketMapper;
-import com.wang.community.dao.UserMapper;
+import com.wang.community.dao.*;
 import com.wang.community.entity.DiscussPost;
 import com.wang.community.entity.LoginTicket;
+import com.wang.community.entity.Message;
 import com.wang.community.entity.User;
 import com.wang.community.service.AlphaService;
 import org.junit.Test;
@@ -40,9 +38,11 @@ public class MapperTests {
     @Autowired
     private LoginTicketMapper loginTicketMapper;
 
+    @Autowired
+    private MessageMapper messageMapper;
 
     @Test
-    public void testSelectUser () {
+    public void testSelectUser() {
         User user = userMapper.selectById(101);
         System.out.println(user);
 
@@ -72,7 +72,7 @@ public class MapperTests {
         int rows = userMapper.updateStatus(150, 1);
         System.out.println(rows);
 
-        rows = userMapper.updateHeader(150,"http://www.nowcoder.com/102.png");
+        rows = userMapper.updateHeader(150, "http://www.nowcoder.com/102.png");
         System.out.println(rows);
 
         rows = userMapper.updatePassword(150, "qazplm");
@@ -81,9 +81,9 @@ public class MapperTests {
     }
 
     @Test
-     public void testSelectPost() {
-        List<DiscussPost> list = discussPostMapper.selectDiscussPosts(149,0,10);
-        for (DiscussPost post : list){
+    public void testSelectPost() {
+        List<DiscussPost> list = discussPostMapper.selectDiscussPosts(149, 0, 10);
+        for (DiscussPost post : list) {
             System.out.println(post);
         }
 
@@ -113,6 +113,7 @@ public class MapperTests {
         System.out.println(loginTicket);
 
     }
+
     @Test
     public void testInsertDiscussPost() {
         DiscussPost post = new DiscussPost();
@@ -121,6 +122,25 @@ public class MapperTests {
         post.setContent("start!");
         post.setCreateTime(new Date());
         discussPostMapper.insertDiscussPost(post);
+    }
+
+    @Test
+    public void testSelectLetter() {
+        List<Message> list = messageMapper.selectConversations(111,0,20);
+        for (Message m: list)   System.out.println(m);
+
+        int count = messageMapper.selectConversationCount(111);
+        System.out.println(count);
+
+        list = messageMapper.selectLetters("111_112", 0, 20);
+        for (Message m: list)   System.out.println(m);
+
+        count = messageMapper.selectLetterCount("111_112");
+        System.out.println(count);
+
+        count = messageMapper.selectLetterUnreadCount(131, "111_131");
+        System.out.println(count);
+
     }
 
 
